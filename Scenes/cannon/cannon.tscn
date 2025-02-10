@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://8d30pagpgsiv"]
+
+[ext_resource type="Script" path="res://scripts/cannon.gd" id="1_wbeim"]
+[ext_resource type="Texture2D" uid="uid://bma2m3y4vjt5k" path="res://assets/env/elementStone025.png" id="2_6r038"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obplo"]
+size = Vector2(34, 109)
+
+[node name="Cannon" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_wbeim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -55)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6r038")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -55.5)
+shape = SubResource("RectangleShape2D_obplo")
+
+[node name="balL_spawner" type="Marker2D" parent="."]
+position = Vector2(0, -124)

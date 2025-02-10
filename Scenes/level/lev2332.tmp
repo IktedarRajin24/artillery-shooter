@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bw0mym8q7unbg"]
+
+[ext_resource type="Texture2D" uid="uid://cn8qms3od742c" path="res://assets/env/MainBG.png" id="1_oqsmy"]
+[ext_resource type="PackedScene" uid="uid://8d30pagpgsiv" path="res://Scenes/cannon/cannon.tscn" id="2_wfg81"]
+[ext_resource type="PackedScene" uid="uid://c0jrfdpud63hw" path="res://Scenes/ground/ground.tscn" id="3_a2r2y"]
+[ext_resource type="PackedScene" uid="uid://baj7n2ol88y0l" path="res://Scenes/RotationController/rotation_controller.tscn" id="4_srspa"]
+
+[node name="Level" type="TextureRect"]
+offset_left = -74.0
+offset_top = -84.0
+offset_right = 1194.0
+offset_bottom = 659.0
+texture = ExtResource("1_oqsmy")
+
+[node name="RotationController" parent="." instance=ExtResource("4_srspa")]
+layout_mode = 1
+offset_left = 122.0
+offset_top = 581.0
+offset_right = 122.0
+offset_bottom = 581.0
+
+[node name="Cannon" parent="." instance=ExtResource("2_wfg81")]
+position = Vector2(210, 569)
+
+[node name="ground" parent="." instance=ExtResource("3_a2r2y")]
+position = Vector2(-105, 690)

@@ -1,0 +1,144 @@
+[gd_scene load_steps=11 format=3 uid="uid://bw0mym8q7unbg"]
+
+[ext_resource type="Texture2D" uid="uid://cn8qms3od742c" path="res://assets/env/MainBG.png" id="1_oqsmy"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="2_vq3i0"]
+[ext_resource type="Texture2D" uid="uid://ds82es4xt533u" path="res://assets/ui/panel_beige.png" id="3_3dtnr"]
+[ext_resource type="FontFile" uid="uid://cv0jlgj2kqfcu" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="4_3x5ab"]
+[ext_resource type="Script" path="res://scripts/cannon.gd" id="5_rcjbo"]
+[ext_resource type="Texture2D" uid="uid://bma2m3y4vjt5k" path="res://assets/env/elementStone025.png" id="6_r76t4"]
+[ext_resource type="PackedScene" uid="uid://cj3jq1iui0dr4" path="res://Scenes/shoot_button/shoot_button.tscn" id="7_qd7gv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mcxxb"]
+font = ExtResource("4_3x5ab")
+font_size = 96
+
+[sub_resource type="LabelSettings" id="LabelSettings_shac8"]
+font = ExtResource("4_3x5ab")
+font_size = 64
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obplo"]
+size = Vector2(34, 109)
+
+[node name="Level" type="TextureRect"]
+offset_left = -74.0
+offset_top = -84.0
+offset_right = 1194.0
+offset_bottom = 659.0
+texture = ExtResource("1_oqsmy")
+script = ExtResource("2_vq3i0")
+
+[node name="RotationController" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 122.0
+offset_top = 581.0
+offset_right = 122.0
+offset_bottom = 581.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RotationController"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="IncrementButton" type="TextureButton" parent="RotationController/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_3dtnr")
+
+[node name="Label" type="Label" parent="RotationController/HBoxContainer/IncrementButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+label_settings = SubResource("LabelSettings_mcxxb")
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="RotationController/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_3dtnr")
+
+[node name="AngleLabel" type="Label" parent="RotationController/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -36.5
+offset_right = 43.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_shac8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DecrementButton" type="TextureButton" parent="RotationController/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_3dtnr")
+
+[node name="Label" type="Label" parent="RotationController/HBoxContainer/DecrementButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "-"
+label_settings = SubResource("LabelSettings_mcxxb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cannon" type="RigidBody2D" parent="."]
+position = Vector2(210, 545)
+gravity_scale = 0.0
+script = ExtResource("5_rcjbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cannon"]
+position = Vector2(0, -55)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_r76t4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cannon"]
+position = Vector2(0, -55.5)
+shape = SubResource("RectangleShape2D_obplo")
+
+[node name="ball_spawn_pos" type="Marker2D" parent="Cannon"]
+z_index = 1
+position = Vector2(0, -125)
+
+[node name="Shoot_button" parent="." instance=ExtResource("7_qd7gv")]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 581.0
+offset_right = 462.0
+offset_bottom = 681.0
+
+[connection signal="pressed" from="RotationController/HBoxContainer/IncrementButton" to="." method="_on_increment_button_pressed"]
+[connection signal="pressed" from="RotationController/HBoxContainer/DecrementButton" to="." method="_on_decrement_button_pressed"]
+[connection signal="pressed" from="Shoot_button" to="." method="_on_shoot_button_pressed"]

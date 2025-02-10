@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj3jq1iui0dr4"]
+
+[ext_resource type="Texture2D" uid="uid://ds82es4xt533u" path="res://assets/ui/panel_beige.png" id="1_4xlyq"]
+[ext_resource type="FontFile" uid="uid://cv0jlgj2kqfcu" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="2_rsssb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8i7td"]
+font = ExtResource("2_rsssb")
+font_size = 28
+
+[node name="Shoot_button" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("1_4xlyq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -11.5
+offset_right = 24.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shoot"
+label_settings = SubResource("LabelSettings_8i7td")
+horizontal_alignment = 1
+vertical_alignment = 1
