@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends StaticBody2D
 
 var rotation_amount = GameManager.rotation_amount
 var angle = GameManager.get_angle()
@@ -18,3 +18,7 @@ func _physics_process(delta: float) -> void:
 		SignalManager.on_angle_change.emit(self.rotation_degrees)
 		
 	rotation = clamp(rotation, 0, deg_to_rad(90))
+
+
+func _get_direction() -> Vector2:
+	return ($ball_spawn_pos.global_position - self.global_position).normalized()

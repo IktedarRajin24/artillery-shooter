@@ -1,6 +1,7 @@
-res://Scenes/level/level.tscn
+res://Scenes/cannonBall/cannon_ball.tscn
+res://scripts/level.gd
 res://Scenes/cannon/cannon.tscn
 res://Scenes/RotationController/rotation_controller.tscn
-res://Scenes/cannonBall/cannon_ball.tscn
 res://Scenes/shoot_button/shoot_button.tscn
-res://scripts/level.gd
+res://scripts/cannon.gd
+res://Scenes/level/level.tscn

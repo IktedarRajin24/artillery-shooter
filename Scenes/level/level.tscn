@@ -114,9 +114,8 @@ label_settings = SubResource("LabelSettings_mcxxb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cannon" type="RigidBody2D" parent="."]
+[node name="Cannon" type="StaticBody2D" parent="."]
 position = Vector2(210, 545)
-gravity_scale = 0.0
 script = ExtResource("5_rcjbo")
 
 [node name="Sprite2D" type="Sprite2D" parent="Cannon"]

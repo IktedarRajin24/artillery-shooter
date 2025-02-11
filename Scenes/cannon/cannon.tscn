@@ -6,8 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obplo"]
 size = Vector2(34, 109)
 
-[node name="Cannon" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="Cannon" type="StaticBody2D"]
 script = ExtResource("1_wbeim")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
